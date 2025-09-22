@@ -2,62 +2,17 @@
 #include <string>
 #include <vector>
 #include <limits>
+#include "BankAccount.h"
 using namespace std;	// Use the standard namespace
 
-class BankAccount {	// Class to represent a bank account
-private:	// Private member variables
-	std::string accountHolderName;	// Account holder's name
-	std::string accountNumber;		// Account number
-	double balance;					// Current balance
-
-public:	// Public member functions
-	BankAccount() : accountHolderName(""), accountNumber(""), balance(0.0) {}
-
-	BankAccount(std::string accNum, std::string name, double bal)
-		: accountHolderName(name), accountNumber(accNum), balance(bal) {
-	}
-
-	std::string getAccountHolderName() const {	// Getter for account holder name
-		return accountHolderName;
-	}
-	std::string getAccountNumber() const { return accountNumber; }	// Getter for account number
-	double getBalance() const { return balance; }
-
-	void setAccountHolderName(const std::string& newName) {	// Setter for account holder name
-		accountHolderName = newName;
-	}
-	void  deposit(double amount) {	// Method to deposit money
-		if (amount > 0) {	// Check for valid deposit
-			balance += amount;
-			std::cout << "Deposited: $" << amount << std::endl;
-		}
-		else {	// Check for negative deposit
-			std::cout << "Deposit amount must be positive." << std::endl;
-		}
-	}
-
-	void withdraw(double amount) {	// Method to withdraw money
-		if (amount > 0 && amount <= balance) {	// Check for valid withdrawal
-			balance -= amount;
-			std::cout << "Withdrew: $" << amount << std::endl;
-		}
-		else if (amount > balance) {	// Check for insufficient funds
-			std::cout << "Insufficient funds." << std::endl;
-		}
-		else {	// Check for negative withdrawal
-			std::cout << "Withdrawal amount must be positive." << std::endl;
-		}
-	}
-};
-
 void displayMenu() {	// Function to display the menu
-	std::cout << "\nBank Account Management System\n";	
+	std::cout << "\nBank Account Management System\n";
 	std::cout << "1. Create a new account\n";
 	std::cout << "2. View account details\n";
 	std::cout << "3. Deposit money\n";
 	std::cout << "4. Withdraw money\n";
 	std::cout << "5. Exit\n";
-	std::cout << "Choose an option: ";
+	std::cout << "\nChoose an option: ";
 }
 
 void displayAccountDetails(const std::vector<BankAccount>& accounts) {	// Function to display account details
@@ -67,10 +22,10 @@ void displayAccountDetails(const std::vector<BankAccount>& accounts) {	// Functi
 	}
 
 	std::cout << "\nAccount Details:\n";	// Display details of all accounts
-	for (const auto& accounts : accounts) {	// Range-based for loop
-		std::cout << "Account Number: " << accounts.getAccountNumber() << "\n";
-		std::cout << "Account Holder: " << accounts.getAccountHolderName() << "\n";
-		std::cout << "Balance: $" << accounts.getBalance() << "\n\n";
+	for (const auto& account : accounts) {
+		std::cout << "Account Number: " << account.getAccountNumber() << "\n";
+		std::cout << "Account Holder: " << account.getAccountHolderName() << "\n";
+		std::cout << "Balance: $" << account.getBalance() << "\n\n";
 	}
 }
 
@@ -117,7 +72,7 @@ int main() {	// Main function
 			std::string accNum, name;
 			double initialDeposit;
 
-			std::cout << "Enter account number: ";	// Get account details
+			std::cout << "\nEnter account number: ";	// Get account details
 			std::cin >> accNum;
 			std::cin.ignore();
 			std::cout << "Enter account holder name: ";
