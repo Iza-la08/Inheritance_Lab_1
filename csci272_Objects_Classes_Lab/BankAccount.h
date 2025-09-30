@@ -2,6 +2,7 @@
 #define BANKACCOUNT_H
 
 #include <string>
+#include <iostream>
 
 class BankAccount {
 private:
@@ -12,10 +13,10 @@ private:
 public:
 	BankAccount();
 	BankAccount(const std::string& accNum, const std::string& name, double bal);
-
 	BankAccount(const BankAccount& other); // Copy constructor
 	BankAccount& operator=(const BankAccount& other); // Copy assignment operator
-	~BankAccount(); // Destructor
+	
+	virtual~BankAccount(); // Vertual destructor for polymorphism
 
 	std::string getAccountHolderName() const;	// Getter for account holder name
 	std::string getAccountNumber() const;	// Getter for account number
@@ -24,7 +25,8 @@ public:
 
 	void deposit(double amount);
 
-	void withdraw(double amount);
+	virtual void withdraw(double amount);
+	virtual void printAccount() const;
 
 	BankAccount& operator+=(double amount); // Deposit money
 	BankAccount& operator-=(double amount); // Withdraw money
@@ -33,6 +35,7 @@ public:
 	bool operator>(const BankAccount& other) const; // Greater than operator
 
 	static void printAccount(const BankAccount& account); // Static method to print account details
+
 	static BankAccount createAccountFromInput(); // Static method to create a new account from user input
 };
 

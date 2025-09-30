@@ -53,10 +53,6 @@ BankAccount::~BankAccount() {
 	delete[] accountHolderName; // Free allocated memory
 }
 
-
-
-
-
 //----------------------------------------------------------------
 std::string BankAccount::getAccountHolderName() const {	// Getter for account holder name
 	return std::string(accountHolderName);
@@ -82,11 +78,8 @@ void  BankAccount::deposit(double amount) {	// Method to deposit money
 	}
 }
 
-
-
 void BankAccount::withdraw(double amount) {	// Method to withdraw money
 	if (amount <= 0.0) {	// Check for valid withdrawal
-		
 		std::cout << "Withdrawal amount must be positive." << std::endl;
 	}
 	else if (amount > balance) {	// Check for insufficient funds
@@ -134,10 +127,10 @@ bool BankAccount::operator>(const BankAccount& other) const {	// Greater than op
 }
 
 // ----------------Static method to print account details--------------------------
-void BankAccount::printAccount(const BankAccount& account) {	
-	std::cout << "Account Number: " << account.accountNumber << "\n";
-	std::cout << "Account Holder: " << account.accountHolderName << "\n";
-	std::cout << "Balance: $" << account.balance << "\n";
+void BankAccount::printAccount() const {	
+	std::cout << "Account Number: " << accountNumber << "\n";
+	std::cout << "Account Holder: " << accountHolderName << "\n";
+	std::cout << "Balance: $" << balance << "\n";
 }
 
 BankAccount BankAccount::createAccountFromInput() {
