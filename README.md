@@ -1,43 +1,70 @@
-"# BankAccount_Objects_Classes_Lab" 
-"# BankAccount_Objects_Classes_Lab" 
-"# BankAccount_Objects_Classes_Lab" 
-"# BankAccount_Objects_Classes_Lab" 
-"# BankAccount_Objects_Classes_Lab" 
-"# BankAccount_Objects_Classes_Lab" 
-"# BankAccount_Objects_Classes_-Lab" 
-"# BankAccount_Objects_Classes_-Lab" 
-"# BankAccount_Objects_Classes_Lab" 
+# Inheritance_Lab
 
-A C++ class for simulating basic banking operations such as creating accounts, deposits, and withdrawals.  
-This project was developed as part of an Object-Oriented Programming (OOP) lab to practice classes, objects, encapsulation, and managing collections with 'std::vector'.
+## Overview
+This project is a **Bank Account Management System** implemented in C++ that demonstrates the use of **inheritance and polymorphism**. The system supports multiple types of bank accounts, including **CheckingAccount** and **SavingsAccount**, each with unique features such as transaction fees and interest rates.
+
 ---
 
-## Bank Account Data Dictionary
+## Features
+- Create multiple bank accounts (Checking or Savings)
+- Deposit and withdraw money
+- Apply transaction fees for checking accounts
+- Calculate interest for savings accounts
+- Polymorphic behavior: base class pointers can call overridden functions
+- Input validation for robust user interaction
 
-| Attribute             | Data Type     | Description                              |
-|------------------------|---------------|------------------------------------------|
-| `accountNumber`       | `std::string` | Unique identifier for the bank account.  |
-| `accountHolderName`    | `std::string` | Name of the account holder.              |
-| `balance`              | `double`      | Current balance of the account.          |
 ---
 
-## Methods List
+## Classes
 
-| Method Signature                                                 | Return Type   | Description                                   |
-|------------------------------------------------------------------|---------------|-----------------------------------------------|
-| `BankAccount()`                                                  | (Constructor) | Default constructor. Initializes empty data.  |
-| `BankAccount(std::string accNum, std::string name, double bal)`  | (Constructor) | Parameterized constructor. Initializes data.  |
-| `std::string getAccountNumber() const`                           | `std::string` | Returns the account number.                   |
-| `std::string getAccountHolderName() const`                       | `std::string` | Returns the account holder’s name.            |
-| `double getBalance() const`                                      | `double`      | Returns the current balance.                  |
-| `void setAccountHolderName(const std::string& newName)`          | `void`        | Updates the account holder’s name.            |
-| `void deposit(double amount)`                                    | `void`        | Deposits funds into the account.              |
-| `void withdraw(double amount)`                                   | `void`        | Withdraws funds if sufficient balance exists. |
+### `BankAccount` (Base Class)
+- Stores common account information: account number, account holder name, and balance
+- Provides virtual functions:
+  - `printAccount()`
+  - `withdraw()`
+- Includes a **virtual destructor** for proper memory management
+
+### `CheckingAccount` (Derived Class)
+- Inherits from `BankAccount`
+- Adds `transactionFee` attribute
+- Overrides `withdraw()` to include the transaction fee
+- Overrides `printAccount()` to display transaction fee
+
+### `SavingsAccount` (Derived Class)
+- Inherits from `BankAccount`
+- Adds `interestRate` attribute
+- `calculateInterest()` adds interest to the account balance
+- Overrides `printAccount()` to display interest rate
+
 ---
 
-"# Inheritance_Lab" 
-"# Inheritance_Lab" 
-"# Inheritance_Lab" 
-"# Inheritance_Lab" 
-"# Inheritance_Lab_1" 
-"# Inheritance_Lab_1" 
+## Getting Started
+
+### Prerequisites
+- C++ compiler supporting C++11 or later
+- CMake or Visual Studio (optional, for project setup)
+
+### Build Instructions
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/Inheritance_Lab.git
+    cd Inheritance_Lab
+    ```
+2. Compile the project using your preferred IDE or CMake.
+3. Run the executable.
+
+---
+
+## Usage
+1. Run the program
+2. Use the menu to:
+   - Create a new account (Checking or Savings)
+   - View account details
+   - Deposit money
+   - Withdraw money
+   - Exit the program
+
+---
+
+## Example
+
