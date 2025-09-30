@@ -35,3 +35,4 @@ This project was developed as part of an Object-Oriented Programming (OOP) lab t
 | `void withdraw(double amount)`                                   | `void`        | Withdraws funds if sufficient balance exists. |
 ---
 
+"# Inheritance_Lab" 
